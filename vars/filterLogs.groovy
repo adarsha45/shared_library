@@ -8,7 +8,7 @@ def call(String filter_string, int occurrence) {
     if (occurrence == 50) {
         currentBuild.result='UNSTABLE'
     }
-    def call2(strin ada){
-    echo "this is adarsha"
+    def call2(string ada){
+        echo "this is adarsha ${ada}"
     }
 }
