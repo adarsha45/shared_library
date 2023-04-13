@@ -11,6 +11,3 @@ def call(String filter_string, int occurrence) {
     }
 
 }
-def call2(){
-  sh " echo `this is adarsha`"
-}
