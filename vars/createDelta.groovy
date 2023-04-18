@@ -1,8 +1,8 @@
+def SOURCE_API_NAME = "56.0"
 def call(Map args){
   def featureBranchName = args.featureBranchName ?: 'main'
   def uiDeltaPath = args.uiDeltaPath ?: ''
   def cqDeltaPath = args.cqDeltaPath ?: ''
-  def SOURCE_API_NAME = "56.0"
   
   
   if (!uiDeltaPath && !cqDeltaPath) {
