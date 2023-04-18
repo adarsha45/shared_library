@@ -10,9 +10,9 @@ def call(Map args){
     }
 
     if (cqDeltaPath) {
-      sh "rm -rf ${cqDeltaPath}"
-      sh "echo ${cqDeltaPath} feature:${featureBranchName}"
-      sh "mkdir -p ${cqDeltaPath}"
+      sh "rm -rf cq-delta"
+      sh "echo ./${cqDeltaPath} "
+      sh "mkdir -p cq-delta"
       println("Run staic Analysis of CQ Source Code ")
       staticAnalysis()
     }
@@ -28,7 +28,7 @@ def uitests(){
    }
 }
 def staticAnalysis(){
-    dir($cqDeltaPath){
+    dir('cq-delta){
       sh "touch sfdx-project.json"
            }
 }
