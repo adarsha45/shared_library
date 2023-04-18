@@ -30,7 +30,6 @@ def uitests(){
 def staticAnalysis(){
     dir('cq-delta'){
       sh "touch sfdx-project.json"
-      writeJSON file: 'sfdx-project.json', json: {"name" = "ada"}, pretty: 4
            }
 }
 
