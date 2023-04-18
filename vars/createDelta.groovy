@@ -11,7 +11,7 @@ def call(Map args){
     }
 
     if (cqDeltaPath) {
-      println "$featureBranchName"
+      println "${featureBranchName}"
       sh "rm -rf cq-delta"
       sh "echo ./${cqDeltaPath} "
       sh "mkdir -p cq-delta"
