@@ -9,7 +9,7 @@ def call(Map args){
         throw new IllegalArgumentException("Both uiDeltaPath and cqDeltaPath cannot be empty. Please provide at least one of them.")
     }
   if (uiDeltaPath) {
-    sh "sudo sfdx plugins:install sfdx-git-delta"
+    sh "sudo sfdx plugins:install sfdx-git-delta | echo 'y'"
     def props = readJSON file: 'sfdx-project.json';
     SOURCE_API_NAME = props.sourceApiVersion;
     sh "rm -rf ui-delta"
