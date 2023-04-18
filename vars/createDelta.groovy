@@ -36,12 +36,10 @@ def uitests(){
 }
 def staticAnalysisCQUI(){
   println "Run Static Analysis of CQ Source Code"
-   //create sfdx project inside cq-delta
             sh "mkdir -p cq-delta/fullSource";
             sh "sfdx force:project:create -d cq-delta --projectname . --defaultpackagedir fullSource --template empty"
             
             sh "cp -a src cq-delta/fullSource"
-
             dir('cq-delta'){
                 def project = readJSON file: 'sfdx-project.json';
                 project.sourceApiVersion = SOURCE_API_NAME;
@@ -85,7 +83,6 @@ def staticAnalysisCQUI(){
                 sh "sfdx force:source:convert -x package/package.xml -d metadata"
             }
             try{
-                //pmd, eslint scan for ui-delta
                 sh "sfdx scanner:run --engine 'pmd,retire-js' --pmdconfig 'extensions/cq-form/.cquipmdruleset.xml'  --format html --target ui-delta/metadata -o ui-delta/pmdscanresult.html --severity-threshold 2";
                 sh "sfdx scanner:run --engine 'eslint-lwc' --eslintconfig 'extensions/cq-form/force-app/main/default/lwc/.eslintrc.json'  --format html --target 'ui-delta/metadata/lwc/**/*.js' -o ui-delta/eslintscanresult.html --normalize-severity --severity-threshold 1";
             }catch(Exception ex){
