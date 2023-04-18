@@ -34,7 +34,7 @@ def uitests(){
       error(ex.getMessage());
    }
 }
-def staticAnalysisCQUI(){
+def staticAnalysisCQ(){
   println "Run Static Analysis of CQ Source Code"
             sh "mkdir -p cq-delta/fullSource";
             sh "sfdx force:project:create -d cq-delta --projectname . --defaultpackagedir fullSource --template empty"
