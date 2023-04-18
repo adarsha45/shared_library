@@ -24,5 +24,6 @@ def uitests(){
      sh "npm run test:unit:coverage"
    }catch(Exception ex){
       error(ex.getMessage());
+   }
   
 }
