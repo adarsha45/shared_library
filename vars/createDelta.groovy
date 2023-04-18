@@ -28,7 +28,7 @@ def uitests(){
    }
 }
 def staticAnalysis(){
-    dir('cq-delta){
+    dir('cq-delta'){
       sh "touch sfdx-project.json"
            }
 }
