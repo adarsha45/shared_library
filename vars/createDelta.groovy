@@ -13,7 +13,8 @@ def call(Map args){
       sh "rm -rf ${cqDeltaPath}"
       sh "echo ${cqDeltaPath} feature:${featureBranchName}"
       sh "mkdir -p ${cqDeltaPath}"
-
+      println("Run staic Analysis of CQ Source Code ")
+      staticAnalysis()
     }
 
 }
@@ -25,5 +26,11 @@ def uitests(){
    }catch(Exception ex){
       error(ex.getMessage());
    }
-  
 }
+def staticAnalysis(){
+    dir('cq-delta'){
+      sh "touch sfdx-project.json"
+      writeJSON file: 'sfdx-project.json', json: {"name" : "ada"}, pretty: 4
+           }
+}
+
