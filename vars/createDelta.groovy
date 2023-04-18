@@ -1,7 +1,9 @@
 def call(Map args){
-  def featureBranchName = args.featureBranchName ?: 'default'
+  def featureBranchName = args.featureBranchName ?: 'main'
   def uiDeltaPath = args.uiDeltaPath ?: ''
   def cqDeltaPath = args.cqDeltaPath ?: ''
+  def SOURCE_API_NAME = "56.0"
+  
   
   if (!uiDeltaPath && !cqDeltaPath) {
         throw new IllegalArgumentException("Both uiDeltaPath and cqDeltaPath cannot be empty. Please provide at least one of them.")
