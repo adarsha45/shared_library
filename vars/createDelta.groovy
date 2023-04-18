@@ -1,7 +1,7 @@
 def call(Map args){
   def featureBranchName = args.featureBranchName ?: 'default'
-  def uiDeltaPath = args.uiDeltaPath ?: 'ui-delta'
-  def cqDeltaPath = args.cqDeltaPath ?: 'cq-delta'
+  def uiDeltaPath = args.uiDeltaPath ?: ' '
+  def cqDeltaPath = args.cqDeltaPath ?: ' '
   if (uiDeltaPath) {
     sh "echo ${uiDeltaPath} feature:${featureBranchName}"
     }
