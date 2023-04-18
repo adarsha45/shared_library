@@ -9,23 +9,45 @@ def call(Map args){
         throw new IllegalArgumentException("Both uiDeltaPath and cqDeltaPath cannot be empty. Please provide at least one of them.")
     }
   if (uiDeltaPath) {
+    sh "sfdx plugins:install sfdx-git-delta"
     def props = readJSON file: 'sfdx-project.json';
     SOURCE_API_NAME = props.sourceApiVersion;
     sh "rm -rf ui-delta"
     sh "mkdir -p ui-delta"
     sh "sfdx sgd:source:delta -f origin/${featureBranchName} -s ./extensions/cq-form -o ui-delta --api-version ${SOURCE_API_NAME}"
-    staticAnalysisCQUI()
     }
-
-    if (cqDeltaPath) {
+  if (cqDeltaPath) {
       println "${featureBranchName}"
       sh "rm -rf cq-delta"
       sh "echo ./${cqDeltaPath} "
       sh "mkdir -p cq-delta"
       println("Run staic Analysis of CQ Source Code ")
-      staticAnalysisCQ()
     }
-
+  
+  println('Run ui tests and publish reports')
+  try{
+        sh "npm install"
+                sh "npm run test:unit:coverage"
+            }catch(Exception ex){
+                error(ex.getMessage());
+            }finally{
+                // Publish the test result
+                publishHTML([
+                    allowMissing: false, 
+                    alwaysLinkToLastBuild: true, 
+                    keepAll: true, 
+                    reportDir: 'coverage/lcov-report', 
+                    reportFiles: 'index.html', 
+                    reportName: 'UI Test Report', 
+                    reportTitles: ''
+                ])
+      }
+  if (uiDeltaPath) {
+    staticAnalysisCQUI()
+  }
+  if(cqDeltaPath){
+    staticAnalysisCQ()
+  }
 }
 def uitests(){
   println "running ui tests"
