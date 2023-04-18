@@ -6,6 +6,7 @@ def call(Map args){
     sh "rm -rf ${uiDeltaPath}"
     sh "echo ${uiDeltaPath} feature:${featureBranchName}"
     sh "mkdir -p ${uiDeltaPath}"
+    uitests()
     }
 
     if (cqDeltaPath) {
@@ -15,4 +16,13 @@ def call(Map args){
 
     }
 
+}
+def uitests(){
+  println "running ui tests"
+   try{
+     sh "npm install"
+     sh "npm run test:unit:coverage"
+   }catch(Exception ex){
+      error(ex.getMessage());
+  
 }
