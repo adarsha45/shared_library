@@ -3,13 +3,15 @@ def call(Map args){
   def uiDeltaPath = args.uiDeltaPath ?: ''
   def cqDeltaPath = args.cqDeltaPath ?: ''
   if (uiDeltaPath) {
-    sh "rm -rf ${uiDeltaPath}"
-    sh "echo ${uiDeltaPath} feature:${featureBranchName}"
-    sh "mkdir -p ${uiDeltaPath}"
-    uitests()
+    def props = readJSON file: 'sfdx-project.json';
+    SOURCE_API_NAME = props.sourceApiVersion;
+    sh "rm -rf ui-delta"
+    sh "mkdir -p ui-delta"
+    sh "sfdx sgd:source:delta -f origin/${featureBranchName} -s ./extensions/cq-form -o ui-delta --api-version ${SOURCE_API_NAME}"
     }
 
     if (cqDeltaPath) {
+      println "$featureBranchName"
       sh "rm -rf cq-delta"
       sh "echo ./${cqDeltaPath} "
       sh "mkdir -p cq-delta"
