@@ -6,11 +6,10 @@ properties([
             booleanParam(name: 'MANAGED_BETA', defaultValue: 'true', description: 'Validates package while creating version')
         ])
     ])
-   withCredentials([file(credentialsId: 'SERVER_KEY', variable:'jwt_key_file'), string(credentialsId: 'CLIENT_ID', variable:'cq_consumer_secret')])
-    {   
+   
         stage('Authorize devhub'){
-            sh 'ada'
+            sh 'echo "this is me"'
         }
-    }
+    
 
 }
