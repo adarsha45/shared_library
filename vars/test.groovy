@@ -1,3 +1,4 @@
+BUILD_NUMBER=env.BUILD_NUMBER
 def call(){
 properties([
         disableConcurrentBuilds(),
@@ -8,7 +9,7 @@ properties([
     ])
    
         stage('Authorize devhub'){
-            sh 'echo "this is me"'
+                sh 'echo "${BUILD_NUMBER}"'
         }
     
 
