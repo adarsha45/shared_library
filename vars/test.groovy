@@ -1,3 +1,3 @@
 def call(){
-  def result = load('file2.groovy')
+  def result = load('file2.groovy').call()
 }
