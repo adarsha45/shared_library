@@ -74,7 +74,8 @@ def call(Map args){
             createPackageVersionFor(PACKAGE_NAME, SERVICE_PATH, IS_RELEASE)
         }
     }
-        
+
+}
     def checkIfPackageExistIn(def BETA_ORG_ALIAS, def packageVersionId) {
     def hasPackage = false;
     try{
@@ -118,9 +119,4 @@ def call(Map args){
         echo "Package version creation request failed."
         echo "${props.stack}"
     }
-}    
-   
-
-    
-
 }
