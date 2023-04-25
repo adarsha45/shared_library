@@ -1,12 +1,13 @@
-def call(){
+def call(Map args){
  //def SF_CONSUMER_KEY=env.SF_CONSUMER_KEY
        def SF_USERNAME="ashishrajbanshi70@empathetic-otter-5k58pt.com"
 //     def SERVER_KEY_CREDENTALS_ID=env.SERVER_KEY_CREDENTALS_ID
        SF_DEV_HUB_ALIAS="devHub"
-       def SF_SCRATCH_ALIAS="testOrg"
+       def SF_SCRATCH_ALIAS=args.ORG_ALIAS
      SF_DEV_INSTANCE_URL ="https://login.salesforce.com"
  stage("Authorize a devhub"){
-//         sh "sfdx auth:web:login -a ${SF_DEV_HUB_ALIAS} -r ${SF_DEV_INSTANCE_URL}"
+  println(${SF_SCRATCH_ALIAS}+ " :org-alias")
+  //         sh "sfdx auth:web:login -a ${SF_DEV_HUB_ALIAS} -r ${SF_DEV_INSTANCE_URL}"
            //sh "sfdx auth:logout -u adarshashrestha957@cunning-hawk-qaejzs.com -p"
            sh "sfdx auth:device:login -d -a ${SF_DEV_HUB_ALIAS} "
            //sh "sf org login device --set-default-dev-hub --alias ${SF_DEV_HUB_ALIAS}"
