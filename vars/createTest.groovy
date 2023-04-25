@@ -10,5 +10,23 @@ def call(){
            sh "sfdx auth:device:login -d -a ${SF_DEV_HUB_ALIAS} "
            //sh "sf org login device --set-default-dev-hub --alias ${SF_DEV_HUB_ALIAS}"
         //sh "sf org login web --set-default-dev-hub --alias ${SF_DEV_HUB_ALIAS} -r ${SF_DEV_INSTANCE_URL}"
-    }  
+    }
+   stage('Create Test Scratch Org'){
+       sh "sfdx force:org:create -v ${SF_DEV_HUB_ALIAS} --setdefaultusername --definitionfile config/project-scratch-def.json -a ${SF_SCRATCH_ALIAS} --wait 10 --durationdays 1"
+    }
+  stage('Generate password for test scratch org'){
+       sh "sfdx force:user:password:generate -v ${SF_DEV_HUB_ALIAS} -a ${SF_SCRATCH_ALIAS}"
+    }
+ 
+  stage('Push to Test Scratch Org'){
+       sh "sfdx force:source:deploy -a ${SF_SCRATCH_ALIAS}"
+    }
+        
+    stage('Assign the default user in the scratch org'){
+       sh "sfdx force:user:permset:assign --permsetname ForJack"
+    }
+
+    stage("Create Package"){
+       sh "sfdx force:package:create --name MovieBooking --description 'You can book movie here' --path force-app --packagetype Managed -v ${SF_DEV_HUB_ALIAS}"
+    }
 }
