@@ -1,5 +1,3 @@
 def call(){
-        stage('echo'){
-                sh "echo inggggg !"
-        }
+     sh "echo 'thios is me'"
           }
