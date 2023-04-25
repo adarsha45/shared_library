@@ -8,7 +8,7 @@ def call(){
  stage("Authorize a devhub"){
 //         sh "sfdx auth:web:login -a ${SF_DEV_HUB_ALIAS} -r ${SF_DEV_INSTANCE_URL}"
            //sh "sfdx auth:logout -u adarshashrestha957@cunning-hawk-qaejzs.com -p"
-           sh "sfdx auth:device:login -d -a ${SF_DEV_HUB_ALIAS} -r ashishrajbanshi70@empathetic-otter-5k58pt.com"
+           sh "sfdx auth:device:login -d -a ${SF_DEV_HUB_ALIAS} -r http://ashishrajbanshi70@empathetic-otter-5k58pt.com"
            //sh "sf org login device --set-default-dev-hub --alias ${SF_DEV_HUB_ALIAS}"
         //sh "sf org login web --set-default-dev-hub --alias ${SF_DEV_HUB_ALIAS} -r ${SF_DEV_INSTANCE_URL}"
     }
