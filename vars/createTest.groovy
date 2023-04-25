@@ -6,6 +6,7 @@ def call(){
        def SF_SCRATCH_ALIAS="testOrg"
      SF_DEV_INSTANCE_URL ="https://login.salesforce.com"
  stage("Authorize a devhub"){
-        sh "sfdx auth:web:login -a ${SF_DEV_HUB_ALIAS} -r ${SF_DEV_INSTANCE_URL}"
+//         sh "sfdx auth:web:login -a ${SF_DEV_HUB_ALIAS} -r ${SF_DEV_INSTANCE_URL}"
+        sh "sf org login web --set-default-dev-hub --alias ${SF_DEV_HUB_ALIAS}"
     }  
 }
