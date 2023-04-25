@@ -1,9 +1,9 @@
-BUILD_NUMBER=env.BUILD_NUMBER
-IS_RELEASE = false;
-STATUS_QUEUED = "Queued"
-STATUS_SUCCESS = "Success"
-DEFAULT_DEVHUB_USER = env.DEFAULT_DEVHUB_USER
 def call(Map args){
+        BUILD_NUMBER=env.BUILD_NUMBER
+        IS_RELEASE = false;
+        STATUS_QUEUED = "Queued"
+        STATUS_SUCCESS = "Success"
+        DEFAULT_DEVHUB_USER = env.DEFAULT_DEVHUB_USER
         PACKAGE_NAME = args.PACKAGE_NAME 
         SERVICE_PATH = args.SERVICE_PATH
         BETA_ORG_ALIAS = args.BETA_ORG_ALIAS
