@@ -3,7 +3,6 @@ def call(Map params) {
     def jname = env.JOB_NAME
     def g = "${env.JOB_NAME}"
     def org = [:]
-    echo /"${g}/"
     echo "${jname}"
     echo "${g}"
 //     org.name = params.name
