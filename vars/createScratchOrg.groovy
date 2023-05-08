@@ -1,8 +1,9 @@
 #!/usr/bin/env groovy
-
-def call(Map params) {
-    def org = [:]
     def jname = env.JOB_NAME
+def call(Map params) {
+    def g = "${env.JOB_NAME}"
+    def org = [:]
+    echo "${g}"
     org.name = params.name
     org.projectScratchDefPath = params.projectScratchDefPath
     org.durationDays = params.durationDays
