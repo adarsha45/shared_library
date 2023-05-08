@@ -1,10 +1,10 @@
-def call(Map params) {
-    def org = [:]
-    org.name = params.name
-    org.projectScratchDefPath = params.projectScratchDefPath
-    org.durationDays = params.durationDays
-    sh "echo '${org.projectScratchDefPath}' '${org.name}'"
-    echo "Create scratch org ${org.name}"
+def call(string params) {
+//     def org = [:]
+//     org.name = params.name
+//     org.projectScratchDefPath = params.projectScratchDefPath
+//     org.durationDays = params.durationDays
+//     sh "echo '${org.projectScratchDefPath}' '${org.name}'"
+    echo "Create scratch org ${params}"
 //     org.alias = "${env.JOB_NAME}"
 
 //     // Username identifies the org in later stages
