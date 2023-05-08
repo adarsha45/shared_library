@@ -1,6 +1,9 @@
-#!/usr/bin/env groovy
-def call(Org org) {
-    
+def call(Map params) {
+    def org = [:]
+    org.name = params.name
+    org.projectScratchDefPath = params.projectScratchDefPath
+    org.durationDays = params.durationDays
+
     echo "Create scratch org ${org.name}"
     org.alias = "${env.JOB_NAME}"
 
@@ -17,3 +20,4 @@ def call(Org org) {
 
     echo "Created scratch org name ${org.name} username ${org.username} password ${org.password} url ${org.instanceUrl} orgId ${org.orgId}"
 }
+
