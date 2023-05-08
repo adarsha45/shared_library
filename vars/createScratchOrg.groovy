@@ -1,5 +1,4 @@
 #!/usr/bin/env groovy
-import com.claimvantage.sjsl.Org
 
 def call(Map params) {
     def org = [:]
