@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 def call(Map params) {
      jname = env.JOB_NAME
-    def g = "${env.JOB_NAME}"
+     g = "${env.JOB_NAME}"
     def org = [:]
     echo "${jname}"
     echo "${g}"
