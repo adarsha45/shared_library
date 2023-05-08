@@ -3,7 +3,9 @@ def call(Map params) {
     org.name = params.name
     org.projectScratchDefPath = params.projectScratchDefPath
     org.durationDays = params.durationDays
-
+    println ${org.durationDays}
+    println ${org.projectScratchDefPath}
+    println ${org.name}
     echo "Create scratch org ${org.name}"
     org.alias = "${env.JOB_NAME}"
 
