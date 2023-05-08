@@ -7,9 +7,10 @@ def call(Map params) {
     org.durationDays = params.durationDays
     echo "Create scratch org ${org.name}"
     org.alias = "${env.JOB_NAME}"
+    echo "${org.alias}"
 
     // Username identifies the org in later stages
-    def create = shWithResult "sfdx force:org:create --definitionfile ${org.projectScratchDefPath} --json --setdefaultusername --durationdays ${org.durationDays} --setalias \"${org.alias}\" --wait 10"
+    def create = shWithResult "sfdx force:org:create --definitionfile ${org.projectScratchDefPath} --json --setdefaultusername --durationdays ${org.durationDays} --setalias ${org.alias} --wait 10"
     org.username = create.username
     org.orgId = create.orgId
 
