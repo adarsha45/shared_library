@@ -1,8 +1,11 @@
 #!/usr/bin/env groovy
 import com.claimvantage.sjsl.Org
 
-def call(Org org) {
-    
+def call(Map params) {
+    def org = [:]
+    org.name = params.name
+    org.projectScratchDefPath = params.projectScratchDefPath
+    org.durationDays = params.durationDays
     echo "Create scratch org ${org.name}"
     org.alias = "${env.JOB_NAME}"
 
