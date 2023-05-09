@@ -12,7 +12,7 @@ def call(Map params) {
     echo "${alias}"
 
     // Username identifies the org in later stages
-   def create = shWithResult "sfdx force:org:create --definitionfile ${org.projectScratchDefPath} --json --setdefaultusername --durationdays ${org.durationDays} --setalias ${jName} --wait 10"
+   def create = shWithResult "sfdx force:org:create --definitionfile ${org.projectScratchDefPath} --json --setdefaultusername --durationdays ${org.durationDays} --setalias ${alias} --wait 10"
     org.username = create.username
     org.orgId = create.orgId
 
